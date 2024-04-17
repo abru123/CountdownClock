@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Clock</title>
+<style>
+  body {
+    background-image: url('//bruichladdich-festival-staging.myshopify.com/cdn/shop/files/Rockndaal-Web-Banner-Desktop_609b80aa-0cad-409e-8819-ef1b4b98eef1.jpg?v=1712657935');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+  }
+  #countdown {
+    font-size: 48px;
+    margin-top: 100px;
+  }
+</style>
+</head>
+<b>Countdown to Feis Ile 2024!</b>
+<body>
+<div id="countdown"></div>
+
+<script>
+  // Set the countdown date (YYYY-MM-DD format)
+  var countdownDate = new Date("2024-05-25").getTime();
+
+  // Update the countdown every second
+  var countdownFunction = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countdownDate - now;
+
+    // Calculations for days, hours, minutes, and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the countdown
+    document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+
+    // If the countdown is over, display a message
+    if (distance < 0) {
+      clearInterval(countdownFunction);
+      document.getElementById("countdown").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+</script>
+</body>
+</html>
